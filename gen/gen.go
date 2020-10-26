@@ -114,7 +114,7 @@ func CreateThrift(n int) Thrift {
 }
 
 func Generate(_ string) error {
-	data := CreateThrift(5)
+	data := CreateThrift(50)
 
 	// Create a new template and parse the letter into it.
 	files := []string{"templates/thrift.tmpl"}
