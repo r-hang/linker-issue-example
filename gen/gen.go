@@ -31,6 +31,7 @@ type Struct struct {
 }
 
 type Service struct {
+	Name    string
 	Methods []Method
 }
 
@@ -98,6 +99,11 @@ func CreateThrift(n int) Thrift {
 			methodDefs = append(methodDefs, sm)
 			methodDefs = append(methodDefs, im)
 		}
+		service := Service{
+			Name:    fmt.Sprintf("Service%v", i),
+			Methods: methodDefs,
+		}
+		serviceDefs = append(serviceDefs, service)
 	}
 
 	return Thrift{
@@ -111,7 +117,8 @@ func Generate(_ string) error {
 	data := CreateThrift(2)
 
 	// Create a new template and parse the letter into it.
-	t := template.Must(template.New("thrift").Parse("thrift.tmpl"))
+	files := []string{"templates/thrift.tmpl"}
+	t := template.Must(template.New("thrift.tmpl").ParseFiles(files...))
 
 	// Execute the template for each recipient.
 	err := t.Execute(os.Stdout, data)

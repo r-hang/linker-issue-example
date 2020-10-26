@@ -1,23 +1,19 @@
-`
-{{ range .Typedefs }}
-    typedef {{ .Name }} {{ .Type }}
-{{ end }}
+{{range .Typedefs}}
+typedef {{ .Name }} {{ .Type }}
+{{end}}
 
 {{ range .Structs }}
-    struct {{ .Name }} {
-    {{ range .Fields }}
-        {{.Num}}: {{ .Status}} {{ .Type}} {{ .Name }}
-    {{ .end }}
-    }
-{{ end }}
+struct {{ .Name }} {
+{{range .Fields}}
+    {{.Num}}: {{ .Status}} {{ .Type}} {{ .Name }}
+{{end}}
+}
+{{end}}
 
-{{ range .Services }}
-
-service {{ .Name }}
-{{ range .Methods}}
+{{range .Services}}
+service {{ .Name }} {
+{{range .Methods}}
     {{ .ReturnType}} {{ .Name }}({{ .Params }})
-{{ end }}
-
-{{ end }}
-
-`
+{{end}}
+}
+{{end}}
