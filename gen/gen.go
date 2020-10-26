@@ -88,12 +88,12 @@ func CreateThrift(n int) Thrift {
 			structTypeKey := fmt.Sprintf("Structure%v", i)
 			sm := Method{
 				ReturnType: structTypeKey,
-				Name:       fmt.Sprintf("SMethod%v", i),
+				Name:       fmt.Sprintf("sMethod%v", i),
 				Params:     fmt.Sprintf("%v: i32 iparam", 1),
 			}
 			im := Method{
 				ReturnType: fmt.Sprintf("IntType%v", i),
-				Name:       fmt.Sprintf("IMethod%v", i),
+				Name:       fmt.Sprintf("iMethod%v", i),
 				Params:     fmt.Sprintf("%v: %v sparam", 1, structTypeKey),
 			}
 			methodDefs = append(methodDefs, sm)
@@ -114,7 +114,7 @@ func CreateThrift(n int) Thrift {
 }
 
 func Generate(_ string) error {
-	data := CreateThrift(2)
+	data := CreateThrift(5)
 
 	// Create a new template and parse the letter into it.
 	files := []string{"templates/thrift.tmpl"}
