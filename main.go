@@ -1,7 +1,11 @@
 package main
 
-import "github.com/rhang/linker-issue-example/gen"
+import (
+	"fmt"
+
+	_ "github.com/r-hang/linker-issue-example/big"
+)
 
 func main() {
-	_ = gen.Generate("")
+	fmt.Println("big binary")
 }
