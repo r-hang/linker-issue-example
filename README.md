@@ -1,7 +1,7 @@
 # linker-issue-example
 
 $ export GOPATH=~/gocode
-$ go mod init
+$ go get go.uber.org/thriftrw
 $ go mod tidy
 $ go run main.go
 $ ./gen_go_from_thrift.sh
